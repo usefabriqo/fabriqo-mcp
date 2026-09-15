@@ -1,0 +1,32 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      - name: Install registry dependencies
+        run: npm ci
+      - name: Validate release hygiene, architecture, types, lint, tests, build, and package
+        run: npm run check
+      - name: Smoke test stdio and SDK integration
+        run: npm run smoke
+      - name: Inspect npm artifact
+        run: npm pack --dry-run

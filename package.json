@@ -1,0 +1,67 @@
+{
+  "name": "@usefabriqo/mcp",
+  "version": "0.1.0",
+  "description": "Official MCP server for Fabriqo",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "bin": {
+    "fabriqo-mcp": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "docs/configuration.md",
+    "docs/architecture.md",
+    "docs/development.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usefabriqo/fabriqo-mcp.git"
+  },
+  "homepage": "https://github.com/usefabriqo/fabriqo-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/usefabriqo/fabriqo-mcp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "node --import tsx src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check --error-on-warnings .",
+    "format": "biome check --write .",
+    "test": "vitest run",
+    "prebuild": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('dist', { recursive: true, force: true })\"",
+    "build": "tsc -p tsconfig.build.json",
+    "smoke": "node --import tsx scripts/smoke.ts",
+    "architecture:check": "node scripts/check-architecture.mjs",
+    "release:check": "node scripts/check-release.mjs",
+    "package:check": "node scripts/verify-package.mjs",
+    "prepack": "npm run build",
+    "check": "npm run architecture:check && npm run release:check && npm run typecheck && npm run lint && npm test && npm run build && npm run package:check"
+  },
+  "dependencies": {
+    "@usefabriqo/sdk": "^0.1.0",
+    "@modelcontextprotocol/node": "2.0.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.13",
+    "@modelcontextprotocol/client": "2.0.0",
+    "@types/node": "22.18.6",
+    "tsx": "4.23.13",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  }
+}

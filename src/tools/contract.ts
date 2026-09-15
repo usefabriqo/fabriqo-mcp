@@ -1,0 +1,546 @@
+// Descriptions, scope mapping and annotations ported from the deliberate Python MCP catalogue.
+export const toolContract = {
+  get_workspace: {
+    description:
+      'Identify the single workspace bound to the bearer credential. This is read-only and requires no additional Workspace API scope.',
+    requiredScope: null,
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  list_products: {
+    description:
+      'List products by lifecycle status with bounded cursor pagination. The API does not provide fuzzy product search. Requires catalog:read.',
+    requiredScope: 'catalog:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_product: {
+    description:
+      'Get one product by its stable ID. Read-only; requires catalog:read.',
+    requiredScope: 'catalog:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  list_materials: {
+    description:
+      'List materials by lifecycle status with bounded cursor pagination. The API does not provide fuzzy material search. Requires catalog:read.',
+    requiredScope: 'catalog:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_material: {
+    description:
+      'Get one material by its stable ID. Read-only; requires catalog:read.',
+    requiredScope: 'catalog:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  list_locations: {
+    description:
+      'List workspace inventory locations with cursor pagination. Requires locations:read.',
+    requiredScope: 'locations:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  list_lots: {
+    description:
+      'List traceable lots, optionally filtered by item or supplier, with cursor pagination. Requires inventory:read.',
+    requiredScope: 'inventory:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_inventory_stock: {
+    description:
+      'Get authoritative stock on hand for a product or material, optionally at a location or lot. This does not calculate stock in MCP. Requires inventory:read.',
+    requiredScope: 'inventory:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  list_inventory_movements: {
+    description:
+      'List inventory ledger movements using supported item, location, lot, or exact reason filters. Read-only; requires inventory:read.',
+    requiredScope: 'inventory:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  search_suppliers: {
+    description:
+      "Search suppliers by the API's name/email text query, optionally including archived records. Read-only; requires suppliers:read.",
+    requiredScope: 'suppliers:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_supplier: {
+    description:
+      'Get one supplier by its stable ID. Read-only; requires suppliers:read.',
+    requiredScope: 'suppliers:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  list_purchase_orders: {
+    description:
+      'List purchase orders using supported text, status, and supplier filters with cursor pagination. Read-only; requires purchasing:read.',
+    requiredScope: 'purchasing:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_purchase_order: {
+    description:
+      'Get a purchase order with independently bounded lines, overheads, and receipts. Pass each returned nested cursor to continue that collection. Requires purchasing:read.',
+    requiredScope: 'purchasing:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  list_sales_orders: {
+    description:
+      'List sales orders using supported status, customer, and source filters with cursor pagination. Read-only; requires sales:read.',
+    requiredScope: 'sales:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_sales_order: {
+    description:
+      'Get a sales order with independently bounded lines and fulfillments. Pass returned nested cursors to continue either collection. Requires sales:read.',
+    requiredScope: 'sales:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_bom: {
+    description:
+      'Get one bounded page of flat BOM lines for a product. Use next_cursor to continue; MCP does not reconstruct manufacturing logic. Requires manufacturing:read and the Manufacturing solution entitlement.',
+    requiredScope: 'manufacturing:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  preview_bom_cost: {
+    description:
+      'Ask Fabriqo to calculate estimated material cost for a product and quantity. Read-only; requires manufacturing:read and the Manufacturing solution entitlement.',
+    requiredScope: 'manufacturing:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  list_production_runs: {
+    description:
+      'List production runs by status with bounded cursor pagination. Read-only; requires manufacturing:read and the Manufacturing solution entitlement.',
+    requiredScope: 'manufacturing:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_production_run: {
+    description:
+      'Get a production run and a bounded page of receipts. Use next_receipt_cursor to continue. Read-only; requires manufacturing:read and the Manufacturing solution entitlement.',
+    requiredScope: 'manufacturing:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_production_run_costing: {
+    description:
+      "Get Fabriqo's authoritative costing for one production run. Read-only; requires reports:read and the Manufacturing solution entitlement.",
+    requiredScope: 'reports:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_production_forecast: {
+    description:
+      'Get a bounded production-demand forecast for a 1-365 day horizon. Read-only; requires reports:read and the Manufacturing solution entitlement.',
+    requiredScope: 'reports:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  get_recall_readiness: {
+    description:
+      'Get aggregate lot traceability coverage and recall-readiness metrics. Read-only; requires reports:read and the Manufacturing solution entitlement.',
+    requiredScope: 'reports:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  trace_lot: {
+    description:
+      'Trace one lot through bounded movement, production-link, and sales-order collections. Each nested collection has its own cursor. Read-only; requires traceability:read and the Manufacturing solution entitlement.',
+    requiredScope: 'traceability:read',
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'read',
+  },
+  create_product: {
+    description:
+      'Create a product in the authenticated workspace. This changes workspace state, requires catalog:write, respects catalog plan limits, and uses a Workspace API idempotency key.',
+    requiredScope: 'catalog:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  update_product: {
+    description:
+      'Update supported fields on one product. This changes workspace state and requires catalog:write; repeating the same patch is safe.',
+    requiredScope: 'catalog:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'state',
+  },
+  create_material: {
+    description:
+      'Create a material in the authenticated workspace. This changes workspace state, requires catalog:write, respects catalog plan limits, and uses a Workspace API idempotency key.',
+    requiredScope: 'catalog:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  update_material: {
+    description:
+      'Update supported fields on one material, including its default supplier. This changes workspace state and requires catalog:write; repeating the same patch is safe.',
+    requiredScope: 'catalog:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'state',
+  },
+  create_supplier: {
+    description:
+      'Create a supplier in the authenticated workspace. This changes workspace state, requires suppliers:write, and uses a Workspace API idempotency key.',
+    requiredScope: 'suppliers:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  update_supplier: {
+    description:
+      'Update supported fields on one supplier. This changes workspace state and requires suppliers:write; repeating the same patch is safe.',
+    requiredScope: 'suppliers:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'state',
+  },
+  create_location: {
+    description:
+      'Create an inventory location in the authenticated workspace. This changes workspace state, requires locations:write, respects plan limits, and uses an idempotency key.',
+    requiredScope: 'locations:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  update_location: {
+    description:
+      'Rename one inventory location. This changes workspace state and requires locations:write; repeating the same patch is safe.',
+    requiredScope: 'locations:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'state',
+  },
+  set_default_location: {
+    description:
+      'Make one inventory location the workspace default. This changes workspace state, requires locations:write and the multi-location plan capability; repeating it is safe.',
+    requiredScope: 'locations:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'state',
+  },
+  create_barcode: {
+    description:
+      "Create a barcode for a product or material. This changes workspace state, requires catalog:write, and uses an idempotency key; a primary barcode replaces that item's current primary designation.",
+    requiredScope: 'catalog:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  add_bom_component: {
+    description:
+      "Add a material component to a product's flat BOM. This changes workspace state, requires manufacturing:write and the Manufacturing solution entitlement, and uses an idempotency key.",
+    requiredScope: 'manufacturing:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  update_bom_component: {
+    description:
+      'Update quantity or scrappage on one flat BOM component. This changes workspace state, requires manufacturing:write and the Manufacturing solution entitlement; repeating the same patch is safe.',
+    requiredScope: 'manufacturing:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'state',
+  },
+  remove_bom_component: {
+    description:
+      "Remove one material component from a product's flat BOM. This destructive operation changes workspace state and requires manufacturing:write and the Manufacturing solution entitlement.",
+    requiredScope: 'manufacturing:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'state',
+  },
+  create_purchase_order: {
+    description:
+      'Create a purchase order. This changes workspace state, requires purchasing:write, and uses a Workspace API idempotency key.',
+    requiredScope: 'purchasing:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  mark_purchase_order_ordered: {
+    description:
+      'Mark a draft purchase order as ordered. This changes workspace state and requires purchasing:write; repeating it is safe.',
+    requiredScope: 'purchasing:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    kind: 'state',
+  },
+  receive_purchase_order: {
+    description:
+      'Receive explicit quantities against purchase-order lines. This changes inventory and order state, requires purchasing:write, and uses an idempotency key.',
+    requiredScope: 'purchasing:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  create_sales_order: {
+    description:
+      'Create a sales order with explicit product lines and business date. This changes workspace state, requires sales:write, and uses an idempotency key.',
+    requiredScope: 'sales:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  fulfill_sales_order: {
+    description:
+      'Fulfill explicit sales-order line quantities from a location. This changes inventory and order state, requires sales:write, and uses an idempotency key.',
+    requiredScope: 'sales:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  create_production_run: {
+    description:
+      'Create a production run for a product and planned quantity. This changes workspace state, requires manufacturing:write and the Manufacturing solution entitlement, and uses an idempotency key.',
+    requiredScope: 'manufacturing:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  record_production_receipt: {
+    description:
+      'Record produced and/or scrap quantity for a production run. This consumes/creates inventory, requires manufacturing:write and the Manufacturing solution entitlement, and uses an idempotency key. At least one quantity must be greater than zero.',
+    requiredScope: 'manufacturing:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  transfer_inventory: {
+    description:
+      'Transfer an item quantity between two workspace locations. This changes inventory, requires inventory:write and the workspace transfers capability, and uses an idempotency key. Source and destination locations must differ.',
+    requiredScope: 'inventory:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+  adjust_inventory: {
+    description:
+      'Post an explicit non-zero inventory adjustment at a location. This changes inventory, requires inventory:write, and uses an idempotency key.',
+    requiredScope: 'inventory:write',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: false,
+      openWorldHint: false,
+    },
+    kind: 'keyed',
+  },
+} as const;
+
+export type ToolName = keyof typeof toolContract;
+export const toolNames = Object.keys(toolContract) as ToolName[];

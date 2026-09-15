@@ -1,0 +1,230 @@
+{
+  "source": "Expected public Workspace API requests for the synthetic sdk-mapping.json cases.",
+  "cases": [
+    {
+      "name": "get_workspace",
+      "method": "GET",
+      "path": "/v1/workspace"
+    },
+    {
+      "name": "list_products",
+      "method": "GET",
+      "path": "/v1/products"
+    },
+    {
+      "name": "get_product",
+      "method": "GET",
+      "path": "/v1/products/11"
+    },
+    {
+      "name": "list_materials",
+      "method": "GET",
+      "path": "/v1/materials"
+    },
+    {
+      "name": "get_material",
+      "method": "GET",
+      "path": "/v1/materials/12"
+    },
+    {
+      "name": "list_locations",
+      "method": "GET",
+      "path": "/v1/locations"
+    },
+    {
+      "name": "list_lots",
+      "method": "GET",
+      "path": "/v1/lots"
+    },
+    {
+      "name": "get_inventory_stock",
+      "method": "GET",
+      "path": "/v1/materials/13/stock"
+    },
+    {
+      "name": "list_inventory_movements",
+      "method": "GET",
+      "path": "/v1/inventory/movements"
+    },
+    {
+      "name": "search_suppliers",
+      "method": "GET",
+      "path": "/v1/suppliers"
+    },
+    {
+      "name": "get_supplier",
+      "method": "GET",
+      "path": "/v1/suppliers/14"
+    },
+    {
+      "name": "list_purchase_orders",
+      "method": "GET",
+      "path": "/v1/purchase-orders"
+    },
+    {
+      "name": "get_purchase_order",
+      "method": "GET",
+      "path": "/v1/purchase-orders/15"
+    },
+    {
+      "name": "list_sales_orders",
+      "method": "GET",
+      "path": "/v1/sales-orders"
+    },
+    {
+      "name": "get_sales_order",
+      "method": "GET",
+      "path": "/v1/sales-orders/16"
+    },
+    {
+      "name": "get_bom",
+      "method": "GET",
+      "path": "/v1/manufacturing/bom-lines"
+    },
+    {
+      "name": "preview_bom_cost",
+      "method": "GET",
+      "path": "/v1/manufacturing/bom-lines/cost-preview"
+    },
+    {
+      "name": "list_production_runs",
+      "method": "GET",
+      "path": "/v1/manufacturing/production/runs"
+    },
+    {
+      "name": "get_production_run",
+      "method": "GET",
+      "path": "/v1/manufacturing/production/runs/19"
+    },
+    {
+      "name": "get_production_run_costing",
+      "method": "GET",
+      "path": "/v1/manufacturing/costing/production-runs/20"
+    },
+    {
+      "name": "get_production_forecast",
+      "method": "GET",
+      "path": "/v1/manufacturing/reports/production-forecast"
+    },
+    {
+      "name": "get_recall_readiness",
+      "method": "GET",
+      "path": "/v1/manufacturing/reports/recall-readiness"
+    },
+    {
+      "name": "trace_lot",
+      "method": "GET",
+      "path": "/v1/manufacturing/traceability/lots/21"
+    },
+    {
+      "name": "create_product",
+      "method": "POST",
+      "path": "/v1/products"
+    },
+    {
+      "name": "update_product",
+      "method": "PATCH",
+      "path": "/v1/products/21"
+    },
+    {
+      "name": "create_material",
+      "method": "POST",
+      "path": "/v1/materials"
+    },
+    {
+      "name": "update_material",
+      "method": "PATCH",
+      "path": "/v1/materials/22"
+    },
+    {
+      "name": "create_supplier",
+      "method": "POST",
+      "path": "/v1/suppliers"
+    },
+    {
+      "name": "update_supplier",
+      "method": "PATCH",
+      "path": "/v1/suppliers/23"
+    },
+    {
+      "name": "create_location",
+      "method": "POST",
+      "path": "/v1/locations"
+    },
+    {
+      "name": "update_location",
+      "method": "PATCH",
+      "path": "/v1/locations/24"
+    },
+    {
+      "name": "set_default_location",
+      "method": "POST",
+      "path": "/v1/locations/24/default"
+    },
+    {
+      "name": "create_barcode",
+      "method": "POST",
+      "path": "/v1/barcodes"
+    },
+    {
+      "name": "add_bom_component",
+      "method": "POST",
+      "path": "/v1/manufacturing/bom-lines"
+    },
+    {
+      "name": "update_bom_component",
+      "method": "PATCH",
+      "path": "/v1/manufacturing/bom-lines/28"
+    },
+    {
+      "name": "remove_bom_component",
+      "method": "DELETE",
+      "path": "/v1/manufacturing/bom-lines/28"
+    },
+    {
+      "name": "create_purchase_order",
+      "method": "POST",
+      "path": "/v1/purchase-orders"
+    },
+    {
+      "name": "mark_purchase_order_ordered",
+      "method": "POST",
+      "path": "/v1/purchase-orders/4/mark-ordered"
+    },
+    {
+      "name": "receive_purchase_order",
+      "method": "POST",
+      "path": "/v1/purchase-orders/4/receipts"
+    },
+    {
+      "name": "create_sales_order",
+      "method": "POST",
+      "path": "/v1/sales-orders"
+    },
+    {
+      "name": "fulfill_sales_order",
+      "method": "POST",
+      "path": "/v1/sales-orders/7/fulfillments"
+    },
+    {
+      "name": "create_production_run",
+      "method": "POST",
+      "path": "/v1/manufacturing/production/runs"
+    },
+    {
+      "name": "record_production_receipt",
+      "method": "POST",
+      "path": "/v1/manufacturing/production/runs/10/receipts"
+    },
+    {
+      "name": "transfer_inventory",
+      "method": "POST",
+      "path": "/v1/inventory/transfers"
+    },
+    {
+      "name": "adjust_inventory",
+      "method": "POST",
+      "path": "/v1/inventory/adjustments"
+    }
+  ]
+}

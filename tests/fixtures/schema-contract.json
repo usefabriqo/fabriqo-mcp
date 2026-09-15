@@ -1,0 +1,4259 @@
+{
+  "source": "Synthetic MCP schema compatibility cases with expected validation and normalized values.",
+  "cases": [
+    {
+      "name": "minimal ToolInput",
+      "schema": "ToolInput",
+      "input": {},
+      "success": true,
+      "output": {}
+    },
+    {
+      "name": "reject extra ToolInput",
+      "schema": "ToolInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ToolResult",
+      "schema": "ToolResult",
+      "input": {
+        "data": {
+          "items": []
+        }
+      },
+      "success": true,
+      "output": {
+        "data": {
+          "items": []
+        },
+        "request_id": null
+      }
+    },
+    {
+      "name": "reject extra ToolResult",
+      "schema": "ToolResult",
+      "input": {
+        "data": {
+          "items": []
+        },
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal MutationToolResult",
+      "schema": "MutationToolResult",
+      "input": {
+        "data": {
+          "id": 1
+        }
+      },
+      "success": true,
+      "output": {
+        "data": {
+          "id": 1
+        },
+        "request_id": null,
+        "idempotency_key": null,
+        "replayed": false
+      }
+    },
+    {
+      "name": "reject extra MutationToolResult",
+      "schema": "MutationToolResult",
+      "input": {
+        "data": {
+          "id": 1
+        },
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal PaginationInput",
+      "schema": "PaginationInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null
+      }
+    },
+    {
+      "name": "reject extra PaginationInput",
+      "schema": "PaginationInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ListProductsInput",
+      "schema": "ListProductsInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "status": null
+      }
+    },
+    {
+      "name": "reject extra ListProductsInput",
+      "schema": "ListProductsInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal GetProductInput",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": 1
+      },
+      "success": true,
+      "output": {
+        "product_id": 1
+      }
+    },
+    {
+      "name": "reject extra GetProductInput",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ListMaterialsInput",
+      "schema": "ListMaterialsInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "status": null
+      }
+    },
+    {
+      "name": "reject extra ListMaterialsInput",
+      "schema": "ListMaterialsInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal GetMaterialInput",
+      "schema": "GetMaterialInput",
+      "input": {
+        "material_id": 1
+      },
+      "success": true,
+      "output": {
+        "material_id": 1
+      }
+    },
+    {
+      "name": "reject extra GetMaterialInput",
+      "schema": "GetMaterialInput",
+      "input": {
+        "material_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal CreateProductInput",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg "
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "0",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra CreateProductInput",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal UpdateProductInput",
+      "schema": "UpdateProductInput",
+      "input": {
+        "product_id": 1,
+        "name": " Changed "
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "name": "Changed"
+      }
+    },
+    {
+      "name": "reject extra UpdateProductInput",
+      "schema": "UpdateProductInput",
+      "input": {
+        "product_id": 1,
+        "name": " Changed ",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal CreateMaterialInput",
+      "schema": "CreateMaterialInput",
+      "input": {
+        "name": " Material ",
+        "sku": " M-1 ",
+        "unit": " kg "
+      },
+      "success": true,
+      "output": {
+        "name": "Material",
+        "sku": "M-1",
+        "unit": "kg",
+        "reorder_level": "0",
+        "default_supplier_id": null,
+        "status": "active",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra CreateMaterialInput",
+      "schema": "CreateMaterialInput",
+      "input": {
+        "name": " Material ",
+        "sku": " M-1 ",
+        "unit": " kg ",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal UpdateMaterialInput",
+      "schema": "UpdateMaterialInput",
+      "input": {
+        "material_id": 1,
+        "default_supplier_id": null
+      },
+      "success": true,
+      "output": {
+        "material_id": 1,
+        "default_supplier_id": null
+      }
+    },
+    {
+      "name": "reject extra UpdateMaterialInput",
+      "schema": "UpdateMaterialInput",
+      "input": {
+        "material_id": 1,
+        "default_supplier_id": null,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ListLocationsInput",
+      "schema": "ListLocationsInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null
+      }
+    },
+    {
+      "name": "reject extra ListLocationsInput",
+      "schema": "ListLocationsInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ListLotsInput",
+      "schema": "ListLotsInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "item_id": null,
+        "supplier_id": null
+      }
+    },
+    {
+      "name": "reject extra ListLotsInput",
+      "schema": "ListLotsInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal InventoryStockInput",
+      "schema": "InventoryStockInput",
+      "input": {
+        "item_type": "material",
+        "item_id": 1
+      },
+      "success": true,
+      "output": {
+        "item_type": "material",
+        "item_id": 1,
+        "location_id": null,
+        "lot_id": null
+      }
+    },
+    {
+      "name": "reject extra InventoryStockInput",
+      "schema": "InventoryStockInput",
+      "input": {
+        "item_type": "material",
+        "item_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ListInventoryMovementsInput",
+      "schema": "ListInventoryMovementsInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "item_id": null,
+        "location_id": null,
+        "lot_id": null,
+        "reason": null
+      }
+    },
+    {
+      "name": "reject extra ListInventoryMovementsInput",
+      "schema": "ListInventoryMovementsInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal SearchSuppliersInput",
+      "schema": "SearchSuppliersInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "q": null,
+        "include_archived": false
+      }
+    },
+    {
+      "name": "reject extra SearchSuppliersInput",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal GetSupplierInput",
+      "schema": "GetSupplierInput",
+      "input": {
+        "supplier_id": 1
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1
+      }
+    },
+    {
+      "name": "reject extra GetSupplierInput",
+      "schema": "GetSupplierInput",
+      "input": {
+        "supplier_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal CreateSupplierInput",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": " Supplier "
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra CreateSupplierInput",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": " Supplier ",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal UpdateSupplierInput",
+      "schema": "UpdateSupplierInput",
+      "input": {
+        "supplier_id": 1,
+        "notes": null
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1,
+        "notes": null
+      }
+    },
+    {
+      "name": "reject extra UpdateSupplierInput",
+      "schema": "UpdateSupplierInput",
+      "input": {
+        "supplier_id": 1,
+        "notes": null,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal CreateLocationInput",
+      "schema": "CreateLocationInput",
+      "input": {
+        "name": " Location "
+      },
+      "success": true,
+      "output": {
+        "name": "Location",
+        "slug": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra CreateLocationInput",
+      "schema": "CreateLocationInput",
+      "input": {
+        "name": " Location ",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal UpdateLocationInput",
+      "schema": "UpdateLocationInput",
+      "input": {
+        "location_id": 1,
+        "name": " Changed "
+      },
+      "success": true,
+      "output": {
+        "location_id": 1,
+        "name": "Changed"
+      }
+    },
+    {
+      "name": "reject extra UpdateLocationInput",
+      "schema": "UpdateLocationInput",
+      "input": {
+        "location_id": 1,
+        "name": " Changed ",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal SetDefaultLocationInput",
+      "schema": "SetDefaultLocationInput",
+      "input": {
+        "location_id": 1
+      },
+      "success": true,
+      "output": {
+        "location_id": 1
+      }
+    },
+    {
+      "name": "reject extra SetDefaultLocationInput",
+      "schema": "SetDefaultLocationInput",
+      "input": {
+        "location_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal CreateBarcodeInput",
+      "schema": "CreateBarcodeInput",
+      "input": {
+        "item_id": 1,
+        "code": " 123 "
+      },
+      "success": true,
+      "output": {
+        "item_id": 1,
+        "code": "123",
+        "symbology": "code128",
+        "is_primary": false,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra CreateBarcodeInput",
+      "schema": "CreateBarcodeInput",
+      "input": {
+        "item_id": 1,
+        "code": " 123 ",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ListPurchaseOrdersInput",
+      "schema": "ListPurchaseOrdersInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "q": null,
+        "status": null,
+        "supplier_id": null
+      }
+    },
+    {
+      "name": "reject extra ListPurchaseOrdersInput",
+      "schema": "ListPurchaseOrdersInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal GetPurchaseOrderInput",
+      "schema": "GetPurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "line_limit": 25,
+        "line_cursor": null,
+        "overhead_limit": 25,
+        "overhead_cursor": null,
+        "receipt_limit": 25,
+        "receipt_cursor": null
+      }
+    },
+    {
+      "name": "reject extra GetPurchaseOrderInput",
+      "schema": "GetPurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ListSalesOrdersInput",
+      "schema": "ListSalesOrdersInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "status": null,
+        "customer_id": null,
+        "source": null
+      }
+    },
+    {
+      "name": "reject extra ListSalesOrdersInput",
+      "schema": "ListSalesOrdersInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal GetSalesOrderInput",
+      "schema": "GetSalesOrderInput",
+      "input": {
+        "order_id": 1
+      },
+      "success": true,
+      "output": {
+        "order_id": 1,
+        "line_limit": 25,
+        "line_cursor": null,
+        "fulfillment_limit": 25,
+        "fulfillment_cursor": null
+      }
+    },
+    {
+      "name": "reject extra GetSalesOrderInput",
+      "schema": "GetSalesOrderInput",
+      "input": {
+        "order_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal GetBomInput",
+      "schema": "GetBomInput",
+      "input": {
+        "product_id": 1
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "product_id": 1
+      }
+    },
+    {
+      "name": "reject extra GetBomInput",
+      "schema": "GetBomInput",
+      "input": {
+        "product_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal AddBomComponentInput",
+      "schema": "AddBomComponentInput",
+      "input": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000"
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "0",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra AddBomComponentInput",
+      "schema": "AddBomComponentInput",
+      "input": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal UpdateBomComponentInput",
+      "schema": "UpdateBomComponentInput",
+      "input": {
+        "bom_component_id": 1,
+        "quantity_per_unit": "1"
+      },
+      "success": true,
+      "output": {
+        "bom_component_id": 1,
+        "quantity_per_unit": "1"
+      }
+    },
+    {
+      "name": "reject extra UpdateBomComponentInput",
+      "schema": "UpdateBomComponentInput",
+      "input": {
+        "bom_component_id": 1,
+        "quantity_per_unit": "1",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal RemoveBomComponentInput",
+      "schema": "RemoveBomComponentInput",
+      "input": {
+        "bom_component_id": 1
+      },
+      "success": true,
+      "output": {
+        "bom_component_id": 1
+      }
+    },
+    {
+      "name": "reject extra RemoveBomComponentInput",
+      "schema": "RemoveBomComponentInput",
+      "input": {
+        "bom_component_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal PreviewBomCostInput",
+      "schema": "PreviewBomCostInput",
+      "input": {
+        "product_id": 1
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "quantity": "1"
+      }
+    },
+    {
+      "name": "reject extra PreviewBomCostInput",
+      "schema": "PreviewBomCostInput",
+      "input": {
+        "product_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ListProductionRunsInput",
+      "schema": "ListProductionRunsInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "status": null
+      }
+    },
+    {
+      "name": "reject extra ListProductionRunsInput",
+      "schema": "ListProductionRunsInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal GetProductionRunInput",
+      "schema": "GetProductionRunInput",
+      "input": {
+        "run_id": 1
+      },
+      "success": true,
+      "output": {
+        "run_id": 1,
+        "receipt_limit": 25,
+        "receipt_cursor": null
+      }
+    },
+    {
+      "name": "reject extra GetProductionRunInput",
+      "schema": "GetProductionRunInput",
+      "input": {
+        "run_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ProductionRunIdInput",
+      "schema": "ProductionRunIdInput",
+      "input": {
+        "run_id": 1
+      },
+      "success": true,
+      "output": {
+        "run_id": 1
+      }
+    },
+    {
+      "name": "reject extra ProductionRunIdInput",
+      "schema": "ProductionRunIdInput",
+      "input": {
+        "run_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ProductionForecastInput",
+      "schema": "ProductionForecastInput",
+      "input": {},
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "horizon_days": 30
+      }
+    },
+    {
+      "name": "reject extra ProductionForecastInput",
+      "schema": "ProductionForecastInput",
+      "input": {
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal TraceLotInput",
+      "schema": "TraceLotInput",
+      "input": {
+        "lot_id": 1
+      },
+      "success": true,
+      "output": {
+        "lot_id": 1,
+        "movements_limit": 25,
+        "movements_cursor": null,
+        "production_links_limit": 25,
+        "production_links_cursor": null,
+        "order_links_limit": 25,
+        "order_links_cursor": null
+      }
+    },
+    {
+      "name": "reject extra TraceLotInput",
+      "schema": "TraceLotInput",
+      "input": {
+        "lot_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal PurchaseOrderLineInput",
+      "schema": "PurchaseOrderLineInput",
+      "input": {
+        "item_type": "material",
+        "material_id": 1,
+        "qty_ordered": "2",
+        "unit_cost": "3"
+      },
+      "success": true,
+      "output": {
+        "item_type": "material",
+        "material_id": 1,
+        "product_id": null,
+        "description": null,
+        "sku": null,
+        "unit": null,
+        "qty_ordered": "2",
+        "unit_cost": "3",
+        "tax_rate": "0"
+      }
+    },
+    {
+      "name": "reject extra PurchaseOrderLineInput",
+      "schema": "PurchaseOrderLineInput",
+      "input": {
+        "item_type": "material",
+        "material_id": 1,
+        "qty_ordered": "2",
+        "unit_cost": "3",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal PurchaseOrderOverheadInput",
+      "schema": "PurchaseOrderOverheadInput",
+      "input": {
+        "kind": "shipping",
+        "description": " Freight ",
+        "amount": "10"
+      },
+      "success": true,
+      "output": {
+        "kind": "shipping",
+        "description": "Freight",
+        "amount": "10",
+        "allocation_method": "by_quantity"
+      }
+    },
+    {
+      "name": "reject extra PurchaseOrderOverheadInput",
+      "schema": "PurchaseOrderOverheadInput",
+      "input": {
+        "kind": "shipping",
+        "description": " Freight ",
+        "amount": "10",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal CreatePurchaseOrderInput",
+      "schema": "CreatePurchaseOrderInput",
+      "input": {
+        "supplier_id": 1,
+        "lines": [
+          {
+            "item_type": "product",
+            "product_id": 1,
+            "qty_ordered": "2",
+            "unit_cost": "3"
+          }
+        ]
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1,
+        "po_number": null,
+        "ordered_at": null,
+        "expected_at": null,
+        "receive_location_id": null,
+        "notes": null,
+        "currency": null,
+        "confirm_paused_items": false,
+        "lines": [
+          {
+            "item_type": "product",
+            "material_id": null,
+            "product_id": 1,
+            "description": null,
+            "sku": null,
+            "unit": null,
+            "qty_ordered": "2",
+            "unit_cost": "3",
+            "tax_rate": "0"
+          }
+        ],
+        "overheads": [],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra CreatePurchaseOrderInput",
+      "schema": "CreatePurchaseOrderInput",
+      "input": {
+        "supplier_id": 1,
+        "lines": [
+          {
+            "item_type": "product",
+            "product_id": 1,
+            "qty_ordered": "2",
+            "unit_cost": "3"
+          }
+        ],
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal MarkPurchaseOrderOrderedInput",
+      "schema": "MarkPurchaseOrderOrderedInput",
+      "input": {
+        "purchase_order_id": 1
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1
+      }
+    },
+    {
+      "name": "reject extra MarkPurchaseOrderOrderedInput",
+      "schema": "MarkPurchaseOrderOrderedInput",
+      "input": {
+        "purchase_order_id": 1,
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal PurchaseReceiveLineInput",
+      "schema": "PurchaseReceiveLineInput",
+      "input": {
+        "line_id": 1,
+        "qty": "1"
+      },
+      "success": true,
+      "output": {
+        "line_id": 1,
+        "qty": "1"
+      }
+    },
+    {
+      "name": "reject extra PurchaseReceiveLineInput",
+      "schema": "PurchaseReceiveLineInput",
+      "input": {
+        "line_id": 1,
+        "qty": "1",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal ReceivePurchaseOrderInput",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ]
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": null,
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra ReceivePurchaseOrderInput",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal SalesOrderLineInput",
+      "schema": "SalesOrderLineInput",
+      "input": {
+        "product_id": 1,
+        "qty": "1",
+        "unit_price": "2"
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "qty": "1",
+        "unit_price": "2"
+      }
+    },
+    {
+      "name": "reject extra SalesOrderLineInput",
+      "schema": "SalesOrderLineInput",
+      "input": {
+        "product_id": 1,
+        "qty": "1",
+        "unit_price": "2",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal CreateSalesOrderInput",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ]
+      },
+      "success": true,
+      "output": {
+        "customer_name": "Customer",
+        "customer_email": null,
+        "delivery_name": null,
+        "delivery_company": null,
+        "delivery_address_line1": null,
+        "delivery_address_line2": null,
+        "delivery_city": null,
+        "delivery_postal_code": null,
+        "delivery_country": null,
+        "delivery_phone": null,
+        "discount_amount": "0",
+        "shipping_amount": "0",
+        "tax_rate": "0",
+        "due_date": null,
+        "order_date": "2026-01-02",
+        "notes": null,
+        "confirm_paused_products": false,
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra CreateSalesOrderInput",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal SalesOrderFulfillLineInput",
+      "schema": "SalesOrderFulfillLineInput",
+      "input": {
+        "order_line_id": 1,
+        "qty": "1"
+      },
+      "success": true,
+      "output": {
+        "order_line_id": 1,
+        "qty": "1"
+      }
+    },
+    {
+      "name": "reject extra SalesOrderFulfillLineInput",
+      "schema": "SalesOrderFulfillLineInput",
+      "input": {
+        "order_line_id": 1,
+        "qty": "1",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal FulfillSalesOrderInput",
+      "schema": "FulfillSalesOrderInput",
+      "input": {
+        "order_id": 1,
+        "lines": [
+          {
+            "order_line_id": 1,
+            "qty": "1"
+          }
+        ]
+      },
+      "success": true,
+      "output": {
+        "order_id": 1,
+        "location_id": null,
+        "fulfilled_at": null,
+        "notes": null,
+        "lines": [
+          {
+            "order_line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra FulfillSalesOrderInput",
+      "schema": "FulfillSalesOrderInput",
+      "input": {
+        "order_id": 1,
+        "lines": [
+          {
+            "order_line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal CreateProductionRunInput",
+      "schema": "CreateProductionRunInput",
+      "input": {
+        "product_id": 1,
+        "quantity_planned": "2"
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "quantity_planned": "2",
+        "notes": null,
+        "confirm_paused_product": false,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra CreateProductionRunInput",
+      "schema": "CreateProductionRunInput",
+      "input": {
+        "product_id": 1,
+        "quantity_planned": "2",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal RecordProductionReceiptInput",
+      "schema": "RecordProductionReceiptInput",
+      "input": {
+        "run_id": 1,
+        "scrap_quantity": "1"
+      },
+      "success": true,
+      "output": {
+        "run_id": 1,
+        "produced_quantity": "0",
+        "scrap_quantity": "1",
+        "location_id": null,
+        "notes": null,
+        "confirm_paused_materials": false,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra RecordProductionReceiptInput",
+      "schema": "RecordProductionReceiptInput",
+      "input": {
+        "run_id": 1,
+        "scrap_quantity": "1",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal TransferInventoryInput",
+      "schema": "TransferInventoryInput",
+      "input": {
+        "item_id": 1,
+        "from_location_id": 1,
+        "to_location_id": 2,
+        "quantity": "1"
+      },
+      "success": true,
+      "output": {
+        "item_id": 1,
+        "from_location_id": 1,
+        "to_location_id": 2,
+        "quantity": "1",
+        "lot_id": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra TransferInventoryInput",
+      "schema": "TransferInventoryInput",
+      "input": {
+        "item_id": 1,
+        "from_location_id": 1,
+        "to_location_id": 2,
+        "quantity": "1",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "minimal AdjustInventoryInput",
+      "schema": "AdjustInventoryInput",
+      "input": {
+        "item_id": 1,
+        "location_id": 1,
+        "quantity_delta": "-1"
+      },
+      "success": true,
+      "output": {
+        "item_id": 1,
+        "location_id": 1,
+        "lot_id": null,
+        "quantity_delta": "-1",
+        "unit_cost": null,
+        "reason_note": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "reject extra AdjustInventoryInput",
+      "schema": "AdjustInventoryInput",
+      "input": {
+        "item_id": 1,
+        "location_id": 1,
+        "quantity_delta": "-1",
+        "workspace_id": 99
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput: {'product_id': 0}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": 0
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput: {'product_id': -1}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": -1
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput: {'product_id': 2147483647}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": 2147483647
+      },
+      "success": true,
+      "output": {
+        "product_id": 2147483647
+      }
+    },
+    {
+      "name": "GetProductInput: {'product_id': 2147483648}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": 2147483648
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput: {'product_id': 1.1}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": 1.1
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput: {'product_id': '2'}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "2"
+      },
+      "success": true,
+      "output": {
+        "product_id": 2
+      }
+    },
+    {
+      "name": "GetProductInput: {'product_id': '2.0'}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "2.0"
+      },
+      "success": true,
+      "output": {
+        "product_id": 2
+      }
+    },
+    {
+      "name": "GetProductInput: {'product_id': True}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": true
+      },
+      "success": true,
+      "output": {
+        "product_id": 1
+      }
+    },
+    {
+      "name": "GetProductInput: {'product_id': False}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": false
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput: {'product_id': '2e0'}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "2e0"
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput: {'product_id': None}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": null
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput: {'product_id': '1_000'}",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "1_000"
+      },
+      "success": true,
+      "output": {
+        "product_id": 1000
+      }
+    },
+    {
+      "name": "pagination limit 0",
+      "schema": "PaginationInput",
+      "input": {
+        "limit": 0
+      },
+      "success": false
+    },
+    {
+      "name": "pagination limit 1",
+      "schema": "PaginationInput",
+      "input": {
+        "limit": 1
+      },
+      "success": true,
+      "output": {
+        "limit": 1,
+        "cursor": null
+      }
+    },
+    {
+      "name": "pagination limit 25",
+      "schema": "PaginationInput",
+      "input": {
+        "limit": 25
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null
+      }
+    },
+    {
+      "name": "pagination limit 100",
+      "schema": "PaginationInput",
+      "input": {
+        "limit": 100
+      },
+      "success": true,
+      "output": {
+        "limit": 100,
+        "cursor": null
+      }
+    },
+    {
+      "name": "pagination limit 101",
+      "schema": "PaginationInput",
+      "input": {
+        "limit": 101
+      },
+      "success": false
+    },
+    {
+      "name": "pagination limit None",
+      "schema": "PaginationInput",
+      "input": {
+        "limit": null
+      },
+      "success": false
+    },
+    {
+      "name": "pagination cursor ",
+      "schema": "PaginationInput",
+      "input": {
+        "cursor": ""
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": ""
+      }
+    },
+    {
+      "name": "pagination cursor aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "schema": "PaginationInput",
+      "input": {
+        "cursor": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "name": "pagination cursor aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "schema": "PaginationInput",
+      "input": {
+        "cursor": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "success": false
+    },
+    {
+      "name": "pagination cursor None",
+      "schema": "PaginationInput",
+      "input": {
+        "cursor": null
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null
+      }
+    },
+    {
+      "name": "ListProductsInput: {'status': 'draft'}",
+      "schema": "ListProductsInput",
+      "input": {
+        "status": "draft"
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "status": "draft"
+      }
+    },
+    {
+      "name": "ListProductsInput: {'status': 'active'}",
+      "schema": "ListProductsInput",
+      "input": {
+        "status": "active"
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "status": "active"
+      }
+    },
+    {
+      "name": "ListProductsInput: {'status': 'paused'}",
+      "schema": "ListProductsInput",
+      "input": {
+        "status": "paused"
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "status": "paused"
+      }
+    },
+    {
+      "name": "ListProductsInput: {'status': 'discontinued'}",
+      "schema": "ListProductsInput",
+      "input": {
+        "status": "discontinued"
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "status": "discontinued"
+      }
+    },
+    {
+      "name": "ListProductsInput: {'status': 'ACTIVE'}",
+      "schema": "ListProductsInput",
+      "input": {
+        "status": "ACTIVE"
+      },
+      "success": false
+    },
+    {
+      "name": "ListProductsInput: {'status': ' active '}",
+      "schema": "ListProductsInput",
+      "input": {
+        "status": " active "
+      },
+      "success": false
+    },
+    {
+      "name": "ListProductsInput: {'status': None}",
+      "schema": "ListProductsInput",
+      "input": {
+        "status": null
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "status": null
+      }
+    },
+    {
+      "name": "decimal '0'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "0"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "0",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '0.00000'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "0.00000"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "0.00000",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '0e-99'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "0e-99"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "0E-99",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '-0'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "-0"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "-0",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '1e2'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "1e2"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "1E+2",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '1.23000'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "1.23000"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "1.23000",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '0.0001'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "0.0001"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "0.0001",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '0.00001'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "0.00001"
+      },
+      "success": false
+    },
+    {
+      "name": "decimal '9999999999.9999'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "9999999999.9999"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "9999999999.9999",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '10000000000'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "10000000000"
+      },
+      "success": false
+    },
+    {
+      "name": "decimal '1e10'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "1e10"
+      },
+      "success": false
+    },
+    {
+      "name": "decimal '1.00001'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "1.00001"
+      },
+      "success": false
+    },
+    {
+      "name": "decimal '+1.2'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "+1.2"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "1.2",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '00.12000'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "00.12000"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "0.12000",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '1_000'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "1_000"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "1000",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal '1__2'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "1__2"
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "12",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "decimal 'NaN'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "NaN"
+      },
+      "success": false
+    },
+    {
+      "name": "decimal 'Infinity'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "Infinity"
+      },
+      "success": false
+    },
+    {
+      "name": "decimal '-Infinity'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "-Infinity"
+      },
+      "success": false
+    },
+    {
+      "name": "decimal True",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": true
+      },
+      "success": false
+    },
+    {
+      "name": "decimal '-1'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": "-1"
+      },
+      "success": false
+    },
+    {
+      "name": "decimal 123.25",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": " Product ",
+        "sku": " P-1 ",
+        "unit": " kg ",
+        "reorder_level": 123.25
+      },
+      "success": true,
+      "output": {
+        "name": "Product",
+        "sku": "P-1",
+        "unit": "kg",
+        "reorder_level": "123.25",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "scrappage -1",
+      "schema": "AddBomComponentInput",
+      "input": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "-1"
+      },
+      "success": false
+    },
+    {
+      "name": "tax -1",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "tax_rate": "-1"
+      },
+      "success": false
+    },
+    {
+      "name": "scrappage 0",
+      "schema": "AddBomComponentInput",
+      "input": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "0"
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "0",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "tax 0",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "tax_rate": "0"
+      },
+      "success": true,
+      "output": {
+        "customer_name": "Customer",
+        "customer_email": null,
+        "delivery_name": null,
+        "delivery_company": null,
+        "delivery_address_line1": null,
+        "delivery_address_line2": null,
+        "delivery_city": null,
+        "delivery_postal_code": null,
+        "delivery_country": null,
+        "delivery_phone": null,
+        "discount_amount": "0",
+        "shipping_amount": "0",
+        "tax_rate": "0",
+        "due_date": null,
+        "order_date": "2026-01-02",
+        "notes": null,
+        "confirm_paused_products": false,
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "scrappage 0.0001",
+      "schema": "AddBomComponentInput",
+      "input": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "0.0001"
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "0.0001",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "tax 0.0001",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "tax_rate": "0.0001"
+      },
+      "success": true,
+      "output": {
+        "customer_name": "Customer",
+        "customer_email": null,
+        "delivery_name": null,
+        "delivery_company": null,
+        "delivery_address_line1": null,
+        "delivery_address_line2": null,
+        "delivery_city": null,
+        "delivery_postal_code": null,
+        "delivery_country": null,
+        "delivery_phone": null,
+        "discount_amount": "0",
+        "shipping_amount": "0",
+        "tax_rate": "0.0001",
+        "due_date": null,
+        "order_date": "2026-01-02",
+        "notes": null,
+        "confirm_paused_products": false,
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "scrappage 9999.9999",
+      "schema": "AddBomComponentInput",
+      "input": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "9999.9999"
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "9999.9999",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "tax 9999.9999",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "tax_rate": "9999.9999"
+      },
+      "success": false
+    },
+    {
+      "name": "scrappage 10000",
+      "schema": "AddBomComponentInput",
+      "input": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "10000"
+      },
+      "success": false
+    },
+    {
+      "name": "tax 10000",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "tax_rate": "10000"
+      },
+      "success": false
+    },
+    {
+      "name": "scrappage 100",
+      "schema": "AddBomComponentInput",
+      "input": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "100"
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "100",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "tax 100",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "tax_rate": "100"
+      },
+      "success": true,
+      "output": {
+        "customer_name": "Customer",
+        "customer_email": null,
+        "delivery_name": null,
+        "delivery_company": null,
+        "delivery_address_line1": null,
+        "delivery_address_line2": null,
+        "delivery_city": null,
+        "delivery_postal_code": null,
+        "delivery_country": null,
+        "delivery_phone": null,
+        "discount_amount": "0",
+        "shipping_amount": "0",
+        "tax_rate": "100",
+        "due_date": null,
+        "order_date": "2026-01-02",
+        "notes": null,
+        "confirm_paused_products": false,
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "scrappage 100.0001",
+      "schema": "AddBomComponentInput",
+      "input": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "100.0001"
+      },
+      "success": true,
+      "output": {
+        "product_id": 1,
+        "material_id": 2,
+        "quantity_per_unit": "1.2000",
+        "scrappage_factor": "100.0001",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "tax 100.0001",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "tax_rate": "100.0001"
+      },
+      "success": false
+    },
+    {
+      "name": "empty UpdateProductInput",
+      "schema": "UpdateProductInput",
+      "input": {
+        "product_id": 1
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateProductInput name",
+      "schema": "UpdateProductInput",
+      "input": {
+        "product_id": 1,
+        "name": null
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateProductInput unit",
+      "schema": "UpdateProductInput",
+      "input": {
+        "product_id": 1,
+        "unit": null
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateProductInput reorder_level",
+      "schema": "UpdateProductInput",
+      "input": {
+        "product_id": 1,
+        "reorder_level": null
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateProductInput status",
+      "schema": "UpdateProductInput",
+      "input": {
+        "product_id": 1,
+        "status": null
+      },
+      "success": false
+    },
+    {
+      "name": "empty UpdateMaterialInput",
+      "schema": "UpdateMaterialInput",
+      "input": {
+        "material_id": 1
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateMaterialInput name",
+      "schema": "UpdateMaterialInput",
+      "input": {
+        "material_id": 1,
+        "name": null
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateMaterialInput unit",
+      "schema": "UpdateMaterialInput",
+      "input": {
+        "material_id": 1,
+        "unit": null
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateMaterialInput reorder_level",
+      "schema": "UpdateMaterialInput",
+      "input": {
+        "material_id": 1,
+        "reorder_level": null
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateMaterialInput status",
+      "schema": "UpdateMaterialInput",
+      "input": {
+        "material_id": 1,
+        "status": null
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateMaterialInput default_supplier_id",
+      "schema": "UpdateMaterialInput",
+      "input": {
+        "material_id": 1,
+        "default_supplier_id": null
+      },
+      "success": true,
+      "output": {
+        "material_id": 1,
+        "default_supplier_id": null
+      }
+    },
+    {
+      "name": "empty UpdateSupplierInput",
+      "schema": "UpdateSupplierInput",
+      "input": {
+        "supplier_id": 1
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateSupplierInput name",
+      "schema": "UpdateSupplierInput",
+      "input": {
+        "supplier_id": 1,
+        "name": null
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateSupplierInput email",
+      "schema": "UpdateSupplierInput",
+      "input": {
+        "supplier_id": 1,
+        "email": null
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1,
+        "email": null
+      }
+    },
+    {
+      "name": "null UpdateSupplierInput notes",
+      "schema": "UpdateSupplierInput",
+      "input": {
+        "supplier_id": 1,
+        "notes": null
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1,
+        "notes": null
+      }
+    },
+    {
+      "name": "null UpdateSupplierInput address_country",
+      "schema": "UpdateSupplierInput",
+      "input": {
+        "supplier_id": 1,
+        "address_country": null
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1,
+        "address_country": null
+      }
+    },
+    {
+      "name": "null UpdateSupplierInput lead_time_days",
+      "schema": "UpdateSupplierInput",
+      "input": {
+        "supplier_id": 1,
+        "lead_time_days": null
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1,
+        "lead_time_days": null
+      }
+    },
+    {
+      "name": "empty UpdateLocationInput",
+      "schema": "UpdateLocationInput",
+      "input": {
+        "location_id": 1
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateLocationInput name",
+      "schema": "UpdateLocationInput",
+      "input": {
+        "location_id": 1,
+        "name": null
+      },
+      "success": false
+    },
+    {
+      "name": "empty UpdateBomComponentInput",
+      "schema": "UpdateBomComponentInput",
+      "input": {
+        "bom_component_id": 1
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateBomComponentInput quantity_per_unit",
+      "schema": "UpdateBomComponentInput",
+      "input": {
+        "bom_component_id": 1,
+        "quantity_per_unit": null
+      },
+      "success": false
+    },
+    {
+      "name": "null UpdateBomComponentInput scrappage_factor",
+      "schema": "UpdateBomComponentInput",
+      "input": {
+        "bom_component_id": 1,
+        "scrappage_factor": null
+      },
+      "success": false
+    },
+    {
+      "name": "mixed null BOM patch",
+      "schema": "UpdateBomComponentInput",
+      "input": {
+        "bom_component_id": 1,
+        "quantity_per_unit": null,
+        "scrappage_factor": "1"
+      },
+      "success": true,
+      "output": {
+        "bom_component_id": 1,
+        "quantity_per_unit": null,
+        "scrappage_factor": "1"
+      }
+    },
+    {
+      "name": "supplier name 0",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": " "
+      },
+      "success": false
+    },
+    {
+      "name": "supplier name 1",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      },
+      "success": true,
+      "output": {
+        "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier name 2",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      },
+      "success": false
+    },
+    {
+      "name": "supplier name 3",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+      },
+      "success": true,
+      "output": {
+        "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier name 4",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+      },
+      "success": false
+    },
+    {
+      "name": "supplier email 0",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "email": " "
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier email 1",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "email": "x"
+      },
+      "success": false
+    },
+    {
+      "name": "supplier email 2",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "email": "@x"
+      },
+      "success": false
+    },
+    {
+      "name": "supplier email 3",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "email": "x@"
+      },
+      "success": false
+    },
+    {
+      "name": "supplier email 4",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "email": "x@y"
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": "x@y",
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier email 5",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "email": " x@y "
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": "x@y",
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier address_country 0",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "address_country": " "
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier address_country 1",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "address_country": "p"
+      },
+      "success": false
+    },
+    {
+      "name": "supplier address_country 2",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "address_country": "pt"
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": "PT",
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier address_country 3",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "address_country": " pt "
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": "PT",
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier address_country 4",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "address_country": "PRT"
+      },
+      "success": false
+    },
+    {
+      "name": "supplier address_country 5",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "address_country": "éé"
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": "ÉÉ",
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier phone 0",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "phone": " a "
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": "a",
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier phone 1",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "phone": ""
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": null,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier lead_time_days 0",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "lead_time_days": -1
+      },
+      "success": false
+    },
+    {
+      "name": "supplier lead_time_days 1",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "lead_time_days": 0
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": 0,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier lead_time_days 2",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "lead_time_days": 2147483647
+      },
+      "success": true,
+      "output": {
+        "name": "Supplier",
+        "email": null,
+        "phone": null,
+        "website": null,
+        "vat_number": null,
+        "address_line1": null,
+        "address_city": null,
+        "address_postal_code": null,
+        "address_country": null,
+        "contact_info": null,
+        "lead_time_days": 2147483647,
+        "notes": null,
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "supplier lead_time_days 3",
+      "schema": "CreateSupplierInput",
+      "input": {
+        "name": "Supplier",
+        "lead_time_days": 2147483648
+      },
+      "success": false
+    },
+    {
+      "name": "SearchSuppliersInput: {'include_archived': 'true'}",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "include_archived": "true"
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "q": null,
+        "include_archived": true
+      }
+    },
+    {
+      "name": "SearchSuppliersInput: {'include_archived': 'false'}",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "include_archived": "false"
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "q": null,
+        "include_archived": false
+      }
+    },
+    {
+      "name": "SearchSuppliersInput: {'include_archived': 'yes'}",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "include_archived": "yes"
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "q": null,
+        "include_archived": true
+      }
+    },
+    {
+      "name": "SearchSuppliersInput: {'include_archived': 'off'}",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "include_archived": "off"
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "q": null,
+        "include_archived": false
+      }
+    },
+    {
+      "name": "SearchSuppliersInput: {'include_archived': 0}",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "include_archived": 0
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "q": null,
+        "include_archived": false
+      }
+    },
+    {
+      "name": "SearchSuppliersInput: {'include_archived': 1}",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "include_archived": 1
+      },
+      "success": true,
+      "output": {
+        "limit": 25,
+        "cursor": null,
+        "q": null,
+        "include_archived": true
+      }
+    },
+    {
+      "name": "SearchSuppliersInput: {'include_archived': 2}",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "include_archived": 2
+      },
+      "success": false
+    },
+    {
+      "name": "SearchSuppliersInput: {'include_archived': ' true '}",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "include_archived": " true "
+      },
+      "success": false
+    },
+    {
+      "name": "SearchSuppliersInput: {'include_archived': None}",
+      "schema": "SearchSuppliersInput",
+      "input": {
+        "include_archived": null
+      },
+      "success": false
+    },
+    {
+      "name": "CreatePurchaseOrderInput empty lines",
+      "schema": "CreatePurchaseOrderInput",
+      "input": {
+        "supplier_id": 1,
+        "lines": []
+      },
+      "success": false
+    },
+    {
+      "name": "ReceivePurchaseOrderInput empty lines",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": []
+      },
+      "success": false
+    },
+    {
+      "name": "CreateSalesOrderInput empty lines",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": []
+      },
+      "success": false
+    },
+    {
+      "name": "FulfillSalesOrderInput empty lines",
+      "schema": "FulfillSalesOrderInput",
+      "input": {
+        "order_id": 1,
+        "lines": []
+      },
+      "success": false
+    },
+    {
+      "name": "PurchaseOrderLineInput: {'item_type': 'material', 'material_id': None, 'qty_ordered': '2', 'unit_cost': '3'}",
+      "schema": "PurchaseOrderLineInput",
+      "input": {
+        "item_type": "material",
+        "material_id": null,
+        "qty_ordered": "2",
+        "unit_cost": "3"
+      },
+      "success": false
+    },
+    {
+      "name": "PurchaseOrderLineInput: {'item_type': 'material', 'material_id': 1, 'qty_ordered': '2', 'unit_cost': '3', 'product_id': 2}",
+      "schema": "PurchaseOrderLineInput",
+      "input": {
+        "item_type": "material",
+        "material_id": 1,
+        "qty_ordered": "2",
+        "unit_cost": "3",
+        "product_id": 2
+      },
+      "success": false
+    },
+    {
+      "name": "PurchaseOrderLineInput: {'item_type': 'product', 'material_id': 1, 'qty_ordered': '2', 'unit_cost': '3'}",
+      "schema": "PurchaseOrderLineInput",
+      "input": {
+        "item_type": "product",
+        "material_id": 1,
+        "qty_ordered": "2",
+        "unit_cost": "3"
+      },
+      "success": false
+    },
+    {
+      "name": "PurchaseOrderLineInput: {'item_type': 'product', 'material_id': None, 'qty_ordered': '2', 'unit_cost': '3', 'product_id': 2}",
+      "schema": "PurchaseOrderLineInput",
+      "input": {
+        "item_type": "product",
+        "material_id": null,
+        "qty_ordered": "2",
+        "unit_cost": "3",
+        "product_id": 2
+      },
+      "success": true,
+      "output": {
+        "item_type": "product",
+        "material_id": null,
+        "product_id": 2,
+        "description": null,
+        "sku": null,
+        "unit": null,
+        "qty_ordered": "2",
+        "unit_cost": "3",
+        "tax_rate": "0"
+      }
+    },
+    {
+      "name": "duplicate ReceivePurchaseOrderInput",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          },
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ]
+      },
+      "success": false
+    },
+    {
+      "name": "duplicate FulfillSalesOrderInput",
+      "schema": "FulfillSalesOrderInput",
+      "input": {
+        "order_id": 1,
+        "lines": [
+          {
+            "order_line_id": 1,
+            "qty": "1"
+          },
+          {
+            "order_line_id": 1,
+            "qty": "1"
+          }
+        ]
+      },
+      "success": false
+    },
+    {
+      "name": "datetime 2026-01-02T03:04:05Z",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "2026-01-02T03:04:05Z"
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "2026-01-02T03:04:05Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "datetime 2026-01-02t03:04:05z",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "2026-01-02t03:04:05z"
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "2026-01-02T03:04:05Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "datetime 2026-01-02_03:04Z",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "2026-01-02_03:04Z"
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "2026-01-02T03:04:00Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "datetime 2026-01-02 03:04:05+02:00",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "2026-01-02 03:04:05+02:00"
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "2026-01-02T03:04:05+02:00",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "datetime 2026-01-02T03:04:05.123456Z",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "2026-01-02T03:04:05.123456Z"
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "2026-01-02T03:04:05.123456Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "datetime 2026-01-02T03:04:05+0200",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "2026-01-02T03:04:05+0200"
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "2026-01-02T03:04:05+02:00",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "datetime 2026-01-02T03:04:05",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "2026-01-02T03:04:05"
+      },
+      "success": false
+    },
+    {
+      "name": "datetime 2026-02-30T00:00:00Z",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "2026-02-30T00:00:00Z"
+      },
+      "success": false
+    },
+    {
+      "name": "datetime  2026-01-02T03:04:05Z ",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": " 2026-01-02T03:04:05Z "
+      },
+      "success": false
+    },
+    {
+      "name": "datetime 0",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": 0
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1970-01-01T00:00:00Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "datetime 0",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "0"
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1970-01-01T00:00:00Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "date 2026-01-02",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ]
+      },
+      "success": true,
+      "output": {
+        "customer_name": "Customer",
+        "customer_email": null,
+        "delivery_name": null,
+        "delivery_company": null,
+        "delivery_address_line1": null,
+        "delivery_address_line2": null,
+        "delivery_city": null,
+        "delivery_postal_code": null,
+        "delivery_country": null,
+        "delivery_phone": null,
+        "discount_amount": "0",
+        "shipping_amount": "0",
+        "tax_rate": "0",
+        "due_date": null,
+        "order_date": "2026-01-02",
+        "notes": null,
+        "confirm_paused_products": false,
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "date 2024-02-29",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2024-02-29",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ]
+      },
+      "success": true,
+      "output": {
+        "customer_name": "Customer",
+        "customer_email": null,
+        "delivery_name": null,
+        "delivery_company": null,
+        "delivery_address_line1": null,
+        "delivery_address_line2": null,
+        "delivery_city": null,
+        "delivery_postal_code": null,
+        "delivery_country": null,
+        "delivery_phone": null,
+        "discount_amount": "0",
+        "shipping_amount": "0",
+        "tax_rate": "0",
+        "due_date": null,
+        "order_date": "2024-02-29",
+        "notes": null,
+        "confirm_paused_products": false,
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "date 2026-02-29",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-02-29",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ]
+      },
+      "success": false
+    },
+    {
+      "name": "date 2026-01-02T00:00:00Z",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02T00:00:00Z",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ]
+      },
+      "success": true,
+      "output": {
+        "customer_name": "Customer",
+        "customer_email": null,
+        "delivery_name": null,
+        "delivery_company": null,
+        "delivery_address_line1": null,
+        "delivery_address_line2": null,
+        "delivery_city": null,
+        "delivery_postal_code": null,
+        "delivery_country": null,
+        "delivery_phone": null,
+        "discount_amount": "0",
+        "shipping_amount": "0",
+        "tax_rate": "0",
+        "due_date": null,
+        "order_date": "2026-01-02",
+        "notes": null,
+        "confirm_paused_products": false,
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "date 2026-01-02T00:00:01Z",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": "2026-01-02T00:00:01Z",
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ]
+      },
+      "success": false
+    },
+    {
+      "name": "date 0",
+      "schema": "CreateSalesOrderInput",
+      "input": {
+        "customer_name": " Customer ",
+        "order_date": 0,
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ]
+      },
+      "success": true,
+      "output": {
+        "customer_name": "Customer",
+        "customer_email": null,
+        "delivery_name": null,
+        "delivery_company": null,
+        "delivery_address_line1": null,
+        "delivery_address_line2": null,
+        "delivery_city": null,
+        "delivery_postal_code": null,
+        "delivery_country": null,
+        "delivery_phone": null,
+        "discount_amount": "0",
+        "shipping_amount": "0",
+        "tax_rate": "0",
+        "due_date": null,
+        "order_date": "1970-01-01",
+        "notes": null,
+        "confirm_paused_products": false,
+        "lines": [
+          {
+            "product_id": 1,
+            "qty": "1",
+            "unit_price": "2"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "CreatePurchaseOrderInput: {'supplier_id': 1, 'lines': [{'item_type': 'product', 'product_id': 1, 'qty_ordered': '2', 'unit_cost': '3'}], 'currency': 'eur'}",
+      "schema": "CreatePurchaseOrderInput",
+      "input": {
+        "supplier_id": 1,
+        "lines": [
+          {
+            "item_type": "product",
+            "product_id": 1,
+            "qty_ordered": "2",
+            "unit_cost": "3"
+          }
+        ],
+        "currency": "eur"
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1,
+        "po_number": null,
+        "ordered_at": null,
+        "expected_at": null,
+        "receive_location_id": null,
+        "notes": null,
+        "currency": "EUR",
+        "confirm_paused_items": false,
+        "lines": [
+          {
+            "item_type": "product",
+            "material_id": null,
+            "product_id": 1,
+            "description": null,
+            "sku": null,
+            "unit": null,
+            "qty_ordered": "2",
+            "unit_cost": "3",
+            "tax_rate": "0"
+          }
+        ],
+        "overheads": [],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "CreatePurchaseOrderInput: {'supplier_id': 1, 'lines': [{'item_type': 'product', 'product_id': 1, 'qty_ordered': '2', 'unit_cost': '3'}], 'currency': ' usd '}",
+      "schema": "CreatePurchaseOrderInput",
+      "input": {
+        "supplier_id": 1,
+        "lines": [
+          {
+            "item_type": "product",
+            "product_id": 1,
+            "qty_ordered": "2",
+            "unit_cost": "3"
+          }
+        ],
+        "currency": " usd "
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1,
+        "po_number": null,
+        "ordered_at": null,
+        "expected_at": null,
+        "receive_location_id": null,
+        "notes": null,
+        "currency": "USD",
+        "confirm_paused_items": false,
+        "lines": [
+          {
+            "item_type": "product",
+            "material_id": null,
+            "product_id": 1,
+            "description": null,
+            "sku": null,
+            "unit": null,
+            "qty_ordered": "2",
+            "unit_cost": "3",
+            "tax_rate": "0"
+          }
+        ],
+        "overheads": [],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "CreatePurchaseOrderInput: {'supplier_id': 1, 'lines': [{'item_type': 'product', 'product_id': 1, 'qty_ordered': '2', 'unit_cost': '3'}], 'currency': 'EU'}",
+      "schema": "CreatePurchaseOrderInput",
+      "input": {
+        "supplier_id": 1,
+        "lines": [
+          {
+            "item_type": "product",
+            "product_id": 1,
+            "qty_ordered": "2",
+            "unit_cost": "3"
+          }
+        ],
+        "currency": "EU"
+      },
+      "success": false
+    },
+    {
+      "name": "CreatePurchaseOrderInput: {'supplier_id': 1, 'lines': [{'item_type': 'product', 'product_id': 1, 'qty_ordered': '2', 'unit_cost': '3'}], 'currency': 'EURO'}",
+      "schema": "CreatePurchaseOrderInput",
+      "input": {
+        "supplier_id": 1,
+        "lines": [
+          {
+            "item_type": "product",
+            "product_id": 1,
+            "qty_ordered": "2",
+            "unit_cost": "3"
+          }
+        ],
+        "currency": "EURO"
+      },
+      "success": false
+    },
+    {
+      "name": "CreatePurchaseOrderInput: {'supplier_id': 1, 'lines': [{'item_type': 'product', 'product_id': 1, 'qty_ordered': '2', 'unit_cost': '3'}], 'currency': None}",
+      "schema": "CreatePurchaseOrderInput",
+      "input": {
+        "supplier_id": 1,
+        "lines": [
+          {
+            "item_type": "product",
+            "product_id": 1,
+            "qty_ordered": "2",
+            "unit_cost": "3"
+          }
+        ],
+        "currency": null
+      },
+      "success": true,
+      "output": {
+        "supplier_id": 1,
+        "po_number": null,
+        "ordered_at": null,
+        "expected_at": null,
+        "receive_location_id": null,
+        "notes": null,
+        "currency": null,
+        "confirm_paused_items": false,
+        "lines": [
+          {
+            "item_type": "product",
+            "material_id": null,
+            "product_id": 1,
+            "description": null,
+            "sku": null,
+            "unit": null,
+            "qty_ordered": "2",
+            "unit_cost": "3",
+            "tax_rate": "0"
+          }
+        ],
+        "overheads": [],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "production requires output",
+      "schema": "RecordProductionReceiptInput",
+      "input": {
+        "run_id": 1
+      },
+      "success": false
+    },
+    {
+      "name": "production negative",
+      "schema": "RecordProductionReceiptInput",
+      "input": {
+        "run_id": 1,
+        "produced_quantity": "-1"
+      },
+      "success": false
+    },
+    {
+      "name": "transfer same location",
+      "schema": "TransferInventoryInput",
+      "input": {
+        "item_id": 1,
+        "from_location_id": 1,
+        "to_location_id": 1,
+        "quantity": "1"
+      },
+      "success": false
+    },
+    {
+      "name": "adjustment zero",
+      "schema": "AdjustInventoryInput",
+      "input": {
+        "item_id": 1,
+        "location_id": 1,
+        "quantity_delta": "0"
+      },
+      "success": false
+    },
+    {
+      "name": "key length 0",
+      "schema": "CreateLocationInput",
+      "input": {
+        "name": "x",
+        "idempotency_key": ""
+      },
+      "success": false
+    },
+    {
+      "name": "key length 4",
+      "schema": "CreateLocationInput",
+      "input": {
+        "name": "x",
+        "idempotency_key": "    "
+      },
+      "success": false
+    },
+    {
+      "name": "key length 200",
+      "schema": "CreateLocationInput",
+      "input": {
+        "name": "x",
+        "idempotency_key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "success": true,
+      "output": {
+        "name": "x",
+        "slug": null,
+        "idempotency_key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "name": "key length 201",
+      "schema": "CreateLocationInput",
+      "input": {
+        "name": "x",
+        "idempotency_key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput coercion edge '1__2'",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "1__2"
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput coercion edge '_12'",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "_12"
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput coercion edge '12_'",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "12_"
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput coercion edge '1_.0'",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "1_.0"
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput coercion edge '1._0'",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "1._0"
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput coercion edge '1.0_0'",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "1.0_0"
+      },
+      "success": false
+    },
+    {
+      "name": "GetProductInput coercion edge '1_0.0'",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "1_0.0"
+      },
+      "success": true,
+      "output": {
+        "product_id": 10
+      }
+    },
+    {
+      "name": "GetProductInput coercion edge '١٢'",
+      "schema": "GetProductInput",
+      "input": {
+        "product_id": "١٢"
+      },
+      "success": false
+    },
+    {
+      "name": "CreateProductInput coercion edge '١٢.٥'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": "x",
+        "sku": "x",
+        "unit": "x",
+        "reorder_level": "١٢.٥"
+      },
+      "success": true,
+      "output": {
+        "name": "x",
+        "sku": "x",
+        "unit": "x",
+        "reorder_level": "12.5",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "CreateProductInput coercion edge '１２.４'",
+      "schema": "CreateProductInput",
+      "input": {
+        "name": "x",
+        "sku": "x",
+        "unit": "x",
+        "reorder_level": "１２.４"
+      },
+      "success": true,
+      "output": {
+        "name": "x",
+        "sku": "x",
+        "unit": "x",
+        "reorder_level": "12.4",
+        "status": "draft",
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge 1.123456",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": 1.123456
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1970-01-01T00:00:01.123456Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge -1.123456",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": -1.123456
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1969-12-31T23:59:58.123456Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge -0.1",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": -0.1
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1969-12-31T23:59:59.100000Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge '-0.1'",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "-0.1"
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1969-12-31T23:59:59.900000Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge 1.1234567",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": 1.1234567
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1970-01-01T00:00:01.123457Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge 20000000001.123",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": 20000000001.123
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1970-08-20T11:33:20.001123Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge -20000000001.123",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": -20000000001.123
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1969-05-14T12:26:39.998123Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge '-20000000001.123'",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "-20000000001.123"
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1969-05-14T12:26:39.998877Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge 20000000000.123",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": 20000000000.123
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "2603-10-11T11:33:20.000123Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge '1.'",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "1."
+      },
+      "success": true,
+      "output": {
+        "purchase_order_id": 1,
+        "received_at": "1970-01-01T00:00:01Z",
+        "location_id": null,
+        "notes": null,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "idempotency_key": null
+      }
+    },
+    {
+      "name": "ReceivePurchaseOrderInput coercion edge '1e3'",
+      "schema": "ReceivePurchaseOrderInput",
+      "input": {
+        "purchase_order_id": 1,
+        "lines": [
+          {
+            "line_id": 1,
+            "qty": "1"
+          }
+        ],
+        "received_at": "1e3"
+      },
+      "success": false
+    }
+  ]
+}

@@ -1,0 +1,791 @@
+{
+  "source": "Synthetic MCP inputs and normalized arguments mapped to public SDK methods.",
+  "cases": [
+    {
+      "name": "get_workspace",
+      "input": {},
+      "operation": "workspace.get",
+      "args": [{}]
+    },
+    {
+      "name": "list_products",
+      "input": {},
+      "operation": "products.list",
+      "args": [
+        {
+          "limit": 25
+        },
+        {}
+      ]
+    },
+    {
+      "name": "get_product",
+      "input": {
+        "product_id": 11
+      },
+      "operation": "products.get",
+      "args": [11, {}]
+    },
+    {
+      "name": "list_materials",
+      "input": {},
+      "operation": "materials.list",
+      "args": [
+        {
+          "query": {
+            "limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_material",
+      "input": {
+        "material_id": 12
+      },
+      "operation": "materials.get",
+      "args": [
+        {
+          "path": {
+            "material_id": 12
+          }
+        }
+      ]
+    },
+    {
+      "name": "list_locations",
+      "input": {},
+      "operation": "locations.list",
+      "args": [
+        {
+          "query": {
+            "limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "list_lots",
+      "input": {},
+      "operation": "lots.list",
+      "args": [
+        {
+          "query": {
+            "limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_inventory_stock",
+      "input": {
+        "item_type": "material",
+        "item_id": 13
+      },
+      "operation": "materials.stock.get",
+      "args": [
+        {
+          "path": {
+            "material_id": 13
+          },
+          "query": {}
+        }
+      ]
+    },
+    {
+      "name": "list_inventory_movements",
+      "input": {},
+      "operation": "inventory.movements.list",
+      "args": [
+        {
+          "query": {
+            "limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "search_suppliers",
+      "input": {},
+      "operation": "suppliers.list",
+      "args": [
+        {
+          "query": {
+            "limit": 25,
+            "include_archived": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_supplier",
+      "input": {
+        "supplier_id": 14
+      },
+      "operation": "suppliers.get",
+      "args": [
+        {
+          "path": {
+            "supplier_id": 14
+          }
+        }
+      ]
+    },
+    {
+      "name": "list_purchase_orders",
+      "input": {},
+      "operation": "purchaseOrders.list",
+      "args": [
+        {
+          "query": {
+            "limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_purchase_order",
+      "input": {
+        "purchase_order_id": 15
+      },
+      "operation": "purchaseOrders.get",
+      "args": [
+        {
+          "path": {
+            "purchase_order_id": 15
+          },
+          "query": {
+            "line_limit": 25,
+            "overhead_limit": 25,
+            "receipt_limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "list_sales_orders",
+      "input": {},
+      "operation": "salesOrders.list",
+      "args": [
+        {
+          "query": {
+            "limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_sales_order",
+      "input": {
+        "order_id": 16
+      },
+      "operation": "salesOrders.get",
+      "args": [
+        {
+          "path": {
+            "order_id": 16
+          },
+          "query": {
+            "line_limit": 25,
+            "fulfillment_limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_bom",
+      "input": {
+        "product_id": 17
+      },
+      "operation": "bomLines.list",
+      "args": [
+        {
+          "query": {
+            "limit": 25,
+            "product_id": 17
+          }
+        }
+      ]
+    },
+    {
+      "name": "preview_bom_cost",
+      "input": {
+        "product_id": 18
+      },
+      "operation": "bomLines.costPreview",
+      "args": [
+        {
+          "query": {
+            "product_id": 18,
+            "quantity": "1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "list_production_runs",
+      "input": {},
+      "operation": "productionRuns.list",
+      "args": [
+        {
+          "query": {
+            "limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_production_run",
+      "input": {
+        "run_id": 19
+      },
+      "operation": "productionRuns.get",
+      "args": [
+        {
+          "path": {
+            "run_id": 19
+          },
+          "query": {
+            "receipt_limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_production_run_costing",
+      "input": {
+        "run_id": 20
+      },
+      "operation": "productionRuns.costing.get",
+      "args": [
+        {
+          "path": {
+            "run_id": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_production_forecast",
+      "input": {},
+      "operation": "manufacturingReports.productionForecast.get",
+      "args": [
+        {
+          "query": {
+            "limit": 25,
+            "horizon_days": 30
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_recall_readiness",
+      "input": {},
+      "operation": "manufacturingReports.recallReadiness.get",
+      "args": [{}]
+    },
+    {
+      "name": "trace_lot",
+      "input": {
+        "lot_id": 21
+      },
+      "operation": "traceability.lots.get",
+      "args": [
+        {
+          "path": {
+            "lot_id": 21
+          },
+          "query": {
+            "movements_limit": 25,
+            "production_links_limit": 25,
+            "order_links_limit": 25
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_product",
+      "input": {
+        "name": "Oak Table",
+        "sku": "OT-1",
+        "unit": "each"
+      },
+      "operation": "products.create",
+      "args": [
+        {
+          "name": "Oak Table",
+          "sku": "OT-1",
+          "unit": "each",
+          "reorder_level": "0",
+          "status": "draft"
+        },
+        {
+          "idempotencyKey": "mcp:v1:test-key"
+        }
+      ]
+    },
+    {
+      "name": "update_product",
+      "input": {
+        "product_id": 21,
+        "name": "Oak Dining Table"
+      },
+      "operation": "products.update",
+      "args": [
+        21,
+        {
+          "name": "Oak Dining Table"
+        },
+        {}
+      ]
+    },
+    {
+      "name": "create_material",
+      "input": {
+        "name": "Oak",
+        "sku": "OAK-1",
+        "unit": "kg",
+        "default_supplier_id": 31
+      },
+      "operation": "materials.create",
+      "args": [
+        {
+          "body": {
+            "name": "Oak",
+            "sku": "OAK-1",
+            "unit": "kg",
+            "reorder_level": "0",
+            "default_supplier_id": 31,
+            "status": "active"
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_material",
+      "input": {
+        "material_id": 22,
+        "default_supplier_id": null
+      },
+      "operation": "materials.update",
+      "args": [
+        {
+          "path": {
+            "material_id": 22
+          },
+          "body": {
+            "default_supplier_id": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_supplier",
+      "input": {
+        "name": "Wood Supply",
+        "email": "   ",
+        "address_country": "pt"
+      },
+      "operation": "suppliers.create",
+      "args": [
+        {
+          "body": {
+            "name": "Wood Supply",
+            "address_country": "PT"
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_supplier",
+      "input": {
+        "supplier_id": 23,
+        "email": "   ",
+        "address_country": "  ",
+        "lead_time_days": 10,
+        "notes": null
+      },
+      "operation": "suppliers.update",
+      "args": [
+        {
+          "path": {
+            "supplier_id": 23
+          },
+          "body": {
+            "email": null,
+            "address_country": null,
+            "lead_time_days": 10,
+            "notes": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_location",
+      "input": {
+        "name": "Porto Warehouse"
+      },
+      "operation": "locations.create",
+      "args": [
+        {
+          "body": {
+            "name": "Porto Warehouse"
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_location",
+      "input": {
+        "location_id": 24,
+        "name": "Lisbon Warehouse"
+      },
+      "operation": "locations.update",
+      "args": [
+        {
+          "path": {
+            "location_id": 24
+          },
+          "body": {
+            "name": "Lisbon Warehouse"
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_default_location",
+      "input": {
+        "location_id": 24
+      },
+      "operation": "locations.makeDefault",
+      "args": [
+        {
+          "path": {
+            "location_id": 24
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_barcode",
+      "input": {
+        "item_id": 25,
+        "code": "0123456789012",
+        "symbology": "ean13"
+      },
+      "operation": "barcodes.create",
+      "args": [
+        {
+          "body": {
+            "item_id": 25,
+            "code": "0123456789012",
+            "symbology": "ean13",
+            "is_primary": false
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "add_bom_component",
+      "input": {
+        "product_id": 26,
+        "material_id": 27,
+        "quantity_per_unit": "4"
+      },
+      "operation": "bomLines.create",
+      "args": [
+        {
+          "body": {
+            "product_id": 26,
+            "material_id": 27,
+            "quantity_per_unit": "4",
+            "scrappage_factor": "0"
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_bom_component",
+      "input": {
+        "bom_component_id": 28,
+        "quantity_per_unit": "3.5"
+      },
+      "operation": "bomLines.update",
+      "args": [
+        {
+          "path": {
+            "bom_line_id": 28
+          },
+          "body": {
+            "quantity_per_unit": "3.5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "remove_bom_component",
+      "input": {
+        "bom_component_id": 28
+      },
+      "operation": "bomLines.delete",
+      "args": [
+        {
+          "path": {
+            "bom_line_id": 28
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_purchase_order",
+      "input": {
+        "supplier_id": 2,
+        "lines": [
+          {
+            "item_type": "material",
+            "material_id": 3,
+            "qty_ordered": "2.5",
+            "unit_cost": "4.25"
+          }
+        ]
+      },
+      "operation": "purchaseOrders.create",
+      "args": [
+        {
+          "body": {
+            "supplier_id": 2,
+            "confirm_paused_items": false,
+            "lines": [
+              {
+                "item_type": "material",
+                "material_id": 3,
+                "qty_ordered": "2.5",
+                "unit_cost": "4.25",
+                "tax_rate": "0"
+              }
+            ],
+            "overheads": []
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "mark_purchase_order_ordered",
+      "input": {
+        "purchase_order_id": 4
+      },
+      "operation": "purchaseOrders.markOrdered",
+      "args": [
+        {
+          "path": {
+            "purchase_order_id": 4
+          }
+        }
+      ]
+    },
+    {
+      "name": "receive_purchase_order",
+      "input": {
+        "purchase_order_id": 4,
+        "lines": [
+          {
+            "line_id": 5,
+            "qty": "1"
+          }
+        ]
+      },
+      "operation": "purchaseOrders.receipts.create",
+      "args": [
+        {
+          "path": {
+            "purchase_order_id": 4
+          },
+          "body": {
+            "lines": [
+              {
+                "line_id": 5,
+                "qty": "1"
+              }
+            ]
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_sales_order",
+      "input": {
+        "customer_name": "Customer",
+        "order_date": "2026-09-02",
+        "lines": [
+          {
+            "product_id": 6,
+            "qty": "1",
+            "unit_price": "9.5"
+          }
+        ]
+      },
+      "operation": "salesOrders.create",
+      "args": [
+        {
+          "body": {
+            "customer_name": "Customer",
+            "discount_amount": "0",
+            "shipping_amount": "0",
+            "tax_rate": "0",
+            "order_date": "2026-09-02",
+            "confirm_paused_products": false,
+            "lines": [
+              {
+                "product_id": 6,
+                "qty": "1",
+                "unit_price": "9.5"
+              }
+            ]
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "fulfill_sales_order",
+      "input": {
+        "order_id": 7,
+        "lines": [
+          {
+            "order_line_id": 8,
+            "qty": "1"
+          }
+        ]
+      },
+      "operation": "salesOrders.fulfillments.create",
+      "args": [
+        {
+          "path": {
+            "order_id": 7
+          },
+          "body": {
+            "lines": [
+              {
+                "order_line_id": 8,
+                "qty": "1"
+              }
+            ]
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_production_run",
+      "input": {
+        "product_id": 9,
+        "quantity_planned": "3"
+      },
+      "operation": "productionRuns.create",
+      "args": [
+        {
+          "body": {
+            "product_id": 9,
+            "quantity_planned": "3",
+            "confirm_paused_product": false
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "record_production_receipt",
+      "input": {
+        "run_id": 10,
+        "produced_quantity": "2"
+      },
+      "operation": "productionRuns.receipts.create",
+      "args": [
+        {
+          "path": {
+            "run_id": 10
+          },
+          "body": {
+            "produced_quantity": "2",
+            "scrap_quantity": "0",
+            "confirm_paused_materials": false
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "transfer_inventory",
+      "input": {
+        "item_id": 11,
+        "from_location_id": 12,
+        "to_location_id": 13,
+        "quantity": "1"
+      },
+      "operation": "inventory.transfers.create",
+      "args": [
+        {
+          "body": {
+            "item_id": 11,
+            "from_location_id": 12,
+            "to_location_id": 13,
+            "quantity": "1"
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    },
+    {
+      "name": "adjust_inventory",
+      "input": {
+        "item_id": 14,
+        "location_id": 15,
+        "quantity_delta": "-1"
+      },
+      "operation": "inventory.adjustments.create",
+      "args": [
+        {
+          "body": {
+            "item_id": 14,
+            "location_id": 15,
+            "quantity_delta": "-1"
+          },
+          "headers": {
+            "Idempotency-Key": "mcp:v1:test-key"
+          }
+        }
+      ]
+    }
+  ]
+}
